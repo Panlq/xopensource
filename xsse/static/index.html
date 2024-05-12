@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server-Sent Events 示例</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <div class="left-section">
+        <h2>消息列表</h2>
+        <ul>
+          <!-- 消息列表内容 -->
+          <li v-for="(event, index) in events" :key="index">{{ event }}</li>
+        </ul>
+        <div v-if="error" style="color: red">{{ error }}</div>
+      </div>
+      <div class="right-section">
+        <div id="button-section">
+          <button @click="start" :disabled="startButtonDisabled">开始</button>
+          <button @click="stop" v-show="stopButtonVisible">停止</button>
+          <button @click="clearMessages">清空消息列表</button>
+          <!-- 清空消息列表按钮 -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 引入 Vue.js 库 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="app.js"></script>
+  </body>
+</html>
