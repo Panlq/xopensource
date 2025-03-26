@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web-b
+  name: web-b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-b
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web-b
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 80m
+            memory: 128Mi
