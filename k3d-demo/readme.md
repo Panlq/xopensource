@@ -2,11 +2,11 @@
 
 # 什么是 K3S
 
-官网：[https://k3s.io/](https://links.jianshu.com/go?to=https%3A%2F%2Fk3s.io%2F)
+官网：[https://k3s.io/](https://k3s.io/)
 
-指南：[https://rancher.com/docs/k3s/latest/en/](https://links.jianshu.com/go?to=https%3A%2F%2Francher.com%2Fdocs%2Fk3s%2Flatest%2Fen%2F)
+指南：[https://rancher.com/docs/k3s/latest/en/](https://rancher.com/docs/k3s/latest/en/)
 
-中文版指南：[https://docs.rancher.cn/docs/k3s/\_index/](https://links.jianshu.com/go?to=https%3A%2F%2Fdocs.rancher.cn%2Fdocs%2Fk3s%2F_index%2F)
+中文版指南：[https://docs.rancher.cn/docs/k3s/\_index/](https://docs.rancher.cn/docs/k3s/_index/)
 
 K3s 是一个轻量级的 Kubernetes 发行版，它针对边缘计算、物联网等场景进行了高度优化，易于安装，全部在不到 100MB 的二进制文件中；非常适合
 
@@ -22,9 +22,9 @@ K3s 是一个轻量级的 Kubernetes 发行版，它针对边缘计算、物联�
 
 # 什么是 K3D
 
-官网：[https://k3d.io/v5.3.0/](https://links.jianshu.com/go?to=https%3A%2F%2Fk3d.io%2Fv5.3.0%2F)
+官网：[https://k3d.io/v5.3.0/](https://k3d.io/v5.3.0/)
 
-指南：[https://k3d.io/v5.3.0/usage/configfile/](https://links.jianshu.com/go?to=https%3A%2F%2Fk3d.io%2Fv5.3.0%2Fusage%2Fconfigfile%2F)
+指南：[https://k3d.io/v5.3.0/usage/configfile/](https://k3d.io/v5.3.0/usage/configfile/)
 
 k3d 是一个轻量级的包装器，用于在 docker 中运行 k3s（Rancher Lab 的最小 Kubernetes 发行版）。
 
