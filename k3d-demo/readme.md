@@ -338,9 +338,56 @@ sequenceDiagram
     end
 ```
 
-# 参考
+# 3. 使用 nginx-ingress
+
+1. 初始化集群的配置项中禁用 traefik ，然后在安装 nginx-ingress-controller
+
+```yaml
+options:
+  k3s:
+    extraArgs:
+      - arg: "--disable=traefik"
+        nodeFilters:
+          - server:*
+```
+
+2. 执行如下命令安装 nginx-ingress-controller
+
+> kubectl apply-fhttps://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+
+3. 将 nginx 设置为集群的默认 ingressClass，确保没有指定 ingressClassName 字段的资源被分配到默认的
+
+> kubectl edit ingressclass -n ingress-nginx
+
+增加注解 `ingressclass.kubernetes.io/is-default-class: "true"`
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"IngressClass","metadata":{"annotations":{},"labels":{"app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"ingress-nginx","app.kubernetes.io/name":"ingress-nginx","app.kubernetes.io/part-of":"ingress-nginx","app.kubernetes.io/version":"1.12.1"},"name":"nginx"},"spec":{"controller":"k8s.io/ingress-nginx"}}
+  creationTimestamp: "2025-03-27T02:59:29Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/version: 1.12.1
+  name: nginx
+  resourceVersion: "812"
+  uid: 1351bffc-d004-4626-9daf-01f2d5444523
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+# 4. 参考
 
 1. [K3S + K3D = K8S a new perfect match for dev and test - Sokube](https://www.sokube.io/en/blog/k3s-k3d-k8s-a-new-perfect-match-for-dev-and-test-en)
-2. [K3S+K3D=K8S 开发利器快速入门](https://www.jianshu.com/p/ee49766200ba)
-3. [K3D + Nginx Ingress 控制器 - Tech Learning](https://erhwenkuo.github.io/kubernetes/01-getting-started/learning-env/k3d/k3d-with-nginx-ingresscontroller/)
-4. [Kubernetes 学习（K3d）](https://zguishen.com/posts/ba3329f9.html)
+2. [k3d exposing_services](https://k3d.io/stable/usage/exposing_services/?h=ingress)
+3. [K3S+K3D=K8S 开发利器快速入门](https://www.jianshu.com/p/ee49766200ba)
+4. [K3D + Nginx Ingress 控制器 - Tech Learning](https://erhwenkuo.github.io/kubernetes/01-getting-started/learning-env/k3d/k3d-with-nginx-ingresscontroller/)
+5. [Kubernetes 学习（K3d）](https://zguishen.com/posts/ba3329f9.html)
